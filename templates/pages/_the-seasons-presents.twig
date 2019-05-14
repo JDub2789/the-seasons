@@ -1,0 +1,3 @@
+{% for event in craft.entries.section('events').all() if event.eventType == 'theSeasonsPresents' %}
+  {{ event.title }}
+{% endfor %}

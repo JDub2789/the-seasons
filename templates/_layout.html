@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ entry.title }} - The Seasons Performance Hall</title>
+  <meta name="description" content="">
+
+  {# Google Font - Open Sans #}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+  {% do view.registerCssFile (siteUrl ~ 'assets/css/app.css') %}
+</head>
+<body>
+  {% include 'includes/navigation/_navigation' %}
+  <main>
+    <div class="container">
+    {% block main %}
+    {% endblock %}
+    </div>
+  </main>
+  {% include 'includes/footer/_footer' %}
+  {% do view.registerJsFile (siteUrl ~ 'assets/js/app.js') %}
+  {% do view.registerJsFile (siteUrl ~ 'assets/js/jquery.min.js') %}
+  {% do view.registerJsFile (siteUrl ~ 'assets/js/youtube-embed.js') %}
+  {% do view.registerJsFile (siteUrl ~ 'assets/js/slick.min.js') %}
+</body>
+</html>

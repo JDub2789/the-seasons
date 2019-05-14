@@ -1,0 +1,44 @@
+<div class="grid-x">
+  <div class="cell medium-10">
+    {% if block.galleryItem|length > 1 %}
+    <div class="gallery-full">
+      {% for gallery in block.galleryItem.all() %}
+      <div class="gallery-image-container">
+      {% if gallery.clickLink|length %}
+      <a href="{{ block.clickLink }}">
+      {% endif %}
+        <img src="{{ gallery.image.one().getUrl('galleryFull') }}">
+        <div class="gallery-image__text">
+        {{ gallery.text }}
+        </div>
+        {% if gallery.clickLink|length %}
+        </a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    {# <div class="gallery-nav">
+      {% for gallery in block.galleryItem %}
+      <img src="{{ gallery.image.one().getUrl('galleryThumbnails') }}">
+      {% endfor %}
+    </div> #}
+
+    {% else %}
+    {% for gallery in block.galleryItem.all() %}
+    <div class="gallery-image-container">
+    {% if gallery.clickLink|length %}
+    <a href="{{ block.clickLink }}">
+    {% endif %}
+      <img src="{{ gallery.image.one().getUrl('galleryFull') }}">
+      <div class="gallery-image__text">
+      {{ gallery.text }}
+      </div>
+      {% if gallery.clickLink|length %}
+      </a>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>

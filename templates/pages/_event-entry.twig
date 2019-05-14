@@ -1,0 +1,15 @@
+<div class="grid-x grid-margin-x grid-margin-y">
+<div class="cell">
+  <h1>{{ craft.app.request.segment(2)|title|replace({'-':' '}) }}</h2>
+</div>
+{% for event in craft.entries.section('events').orderBy('eventDate asc').all() if event.eventType == craft.app.request.segment(2)|camel %}
+<div class="cell medium-4 event-container">
+<a href="{{ event.url() }}"><h2 style="font-size:26px">{{ event.title }}</h2></a>
+<p class="text--bold">{{ event.eventDate|date('M j, Y') }}: {{ event.eventDate|time('short') }} - {{ event.eventEndTime|time('short') }}</p>
+<p><a class="button" href="{{ event.url() }}">Learn more</a></p>
+{% for block in event.contentBlocks.all() if block.type == 'buttons' %}
+  {% include 'blocks/_entry' %}
+{% endfor %}
+</div>
+{% endfor %}
+</div>

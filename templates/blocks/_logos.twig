@@ -1,0 +1,7 @@
+<div class="grid-x grid-padding-x grid-padding-y grid-margin-x grid-margin-y align-middle ">
+{% for sponsor in block.sponsor.all() %}
+  <div class="cell medium-4">
+    {% if sponsor.websiteLink|length %}<a href="{{ sponsor.websiteLink }}" target="blank">{% endif %}<img src="{{ sponsor.logoImage.one().url() }}" alt="logo for {{ sponsor.websiteLink }}">{% if sponsor.websiteLink|length %}</a>{% endif %}
+  </div>
+  {% endfor %}
+</div>

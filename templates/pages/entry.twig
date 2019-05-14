@@ -1,0 +1,30 @@
+{% extends '_layout' %}
+
+{% block main %}
+{% if craft.app.request.segments|first == 'events' %}
+{# get segment(2) #}
+   {# {% set secondSegment = craft.app.request.segment(2)|camel %} #}
+
+   {# include event-entry template with include segment(2) #}
+   {% include 'pages/_event-entry' %}
+{# {% switch craft.app.request.segment(2) %}
+  {% case 'the-seasons-presents' %}
+   
+
+  {% case 'brown-bag-concerts' %}
+
+  {% case 'partnership-events' %}
+
+  {% case 'promoter-events' %}
+
+  {% case 'other-public-events' %}
+
+{% endswitch %} #}
+{% else %}
+{% for block in entry.contentBlocks.all() %}
+{% include 'blocks/_entry' %}
+{% endfor %}
+{% endif %}
+
+
+{% endblock %}

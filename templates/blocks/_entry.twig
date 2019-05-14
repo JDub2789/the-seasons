@@ -1,0 +1,19 @@
+
+  {% switch block.type %}
+    {% case 'headline' %}
+      {% include 'blocks/_headline' with block %}
+    {% case 'textBlock' %}
+      {% include 'blocks/_text' with block %}
+    {% case 'textWithImage' %}
+      {% include 'blocks/_text-with-image' with block %}
+    {% case 'buttons' %}
+      {% include 'blocks/_buttons' with block %}
+    {% case 'imageGallery' %}
+      {% include 'blocks/_gallery' with block %}
+    {% case 'video' %}
+      {% include 'blocks/_video' with block %}
+    {% case 'sponsorLogoAndLink' %}
+      {% include 'blocks/_logos' with block %}
+    {% case 'horizontalLine' %}
+      <hr class="margin-top-30 margin-bottom-20">
+  {% endswitch %}

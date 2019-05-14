@@ -1,0 +1,13 @@
+{% extends '_layout' %}
+
+{% block main %}
+{# {% include 'home/_slider' %} #}
+<div class="grid-x grid-margin-x grid-margin-y">
+<div class="cell medium-9">
+{% for block in entry.contentBlocks.all() %}
+  {% include 'blocks/_entry' %}
+{% endfor %}
+</div>
+{% include 'includes/_event-sidebar' %}
+</div>
+{% endblock %}

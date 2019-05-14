@@ -1,0 +1,3 @@
+{% for button in block.buttons %}
+  <a class="button" href="{{ button.buttonLink }}"{% if button.openInNewTab %} target="_blank" rel="noreferrer"{% endif %}>{{ button.buttonText }}</a>
+{% endfor %}
