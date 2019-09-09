@@ -1,0 +1,30 @@
+<div class="home-slider">
+  {% for firstSlide in entry.imageSlider.firstSlide.all() %}
+    <div class="first-slide gallery-image-container">
+      {% if firstSlide.clickLink|length %}
+        <a href="{{ block.clickLink }}">
+        {% endif %}
+        <img src="{{ firstSlide.image.one().url('') }}" class="home-slider__img">
+        <div class="gallery-image__text">
+          {{ firstSlide.text }}
+        </div>
+        {% if firstSlide.clickLink|length %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+  {% for otherSlides in entry.imageSlider.otherSlides.all() %}
+    <div class="other-slides gallery-image-container">
+      {% if otherSlides.clickLink|length %}
+        <a href="{{ block.clickLink }}">
+        {% endif %}
+        <img src="{{ otherSlides.image.one().url('') }}">
+        <div class="gallery-image__text">
+          {{ otherSlides.text }}
+        </div>
+        {% if otherSlides.clickLink|length %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

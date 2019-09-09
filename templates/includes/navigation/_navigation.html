@@ -1,22 +1,27 @@
 {% set entries = craft.entries.section('pages').all() %}
-
 <nav>
-  <div class="top-nav">
-    <div class="container">
-      <div class="grid-x grid-margin-x grid-margin-y align-middle align-justify">
-      <a class="cell medium-shrink" href="{{ url('') }}" title="The Seasons homepage"><img class="nav__logo" src="{{ logo.logo.one().url() }}" alt="The Seasons logo"></a>
-      <div class="cell medium-shrink">
-        <a href="https://my.matterport.com/show/?m=4pZmUkavno3" target="_blank" rel="noreferrer" class="button button--dark">See a Virtual Tour</a>
-        <div class="social-media-links">
-          <a href="https://www.facebook.com/theseasonsyakima" target="_blank" rel="noreferrer" title="The Seasons on Facebook"><img src="{{siteUrl}}assets/img/facebook.svg" alt="Facebook icon"></a>
-          <a href="https://twitter.com/The_Seasons" target="_blank" rel="noreferrer" title="The Seasons on Twitter"><img src="{{siteUrl}}assets/img/twitter.svg" alt="Twitter icon"></a>
-          <a href="https://www.instagram.com/theseasonsyakima/" target="_blank" rel="noreferrer" title="The Seasons on Instagram"><img src="{{siteUrl}}assets/img/instagram.svg" alt="Instagram icon"></a>
-          <p class="margin-top-10"><a class="text--white text--bold" href="tel:+5094531888">(509) 453-1888</a></p>
-        </div>
+  <div class="top-nav text--center">
+    <a class="text--center" href="{{ url('') }}" title="The Seasons homepage"><img class="nav__logo"
+        src="{{ logo.logo.one().url() }}" alt="The Seasons logo"></a>
+    <div class="top-nav__buttons">
+      {# <a href="https://my.matterport.com/show/?m=4pZmUkavno3" target="_blank" rel="noreferrer"
+                          class="button button--green">See a Virtual Tour</a> #}
+      <a href="" target="_blank" rel="noreferrer noopener" class="button button--green">Donate</a>
+      <div class="social-media-links margin-bottom-20">
+        <a href="https://www.facebook.com/theseasonsyakima" target="_blank" rel="noreferrer"
+          title="The Seasons on Facebook"><img src="{{siteUrl}}assets/img/facebook.svg" alt="Facebook icon"></a>
+        <a href="https://twitter.com/The_Seasons" target="_blank" rel="noreferrer" title="The Seasons on Twitter"><img
+            src="{{siteUrl}}assets/img/twitter.svg" alt="Twitter icon"></a>
+        <a href="https://www.instagram.com/theseasonsyakima/" target="_blank" rel="noreferrer"
+          title="The Seasons on Instagram"><img src="{{siteUrl}}assets/img/instagram.svg" alt="Instagram icon"></a>
       </div>
-    </div>
+      <p class="margin-top-10 margin-bottom-0">
+        <a class="text--white text--bold" href="tel:+5094531888">(509)
+          453-1888</a>
+      </p>
     </div>
   </div>
+  {# Menu #}
   <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle="main-menu"></button>
     <div class="title-bar-title">Menu</div>
@@ -24,16 +29,19 @@
   <div class="top-bar" id="main-menu">
     <div class="top-bar-left">
       <ul class="vertical medium-horizontal menu main-menu" data-responsive-menu="accordion medium-dropdown">
-        {% nav entry in entries %}
-        <li>
-          <a href="{{ entry.url }}">{{ entry.title }}</a>
-          {% ifchildren %}
-          <ul class="menu">
-            {% children %}
-          </ul>
-          {% endifchildren %}
-        </li>
-        {% endnav %}
+        <li{% if craft.app.request.segments|first == '' %} class="nav-link--active" {% endif %}>
+          <a href="{{ url('') }}">Home</a>
+          </li>
+          {% nav entry in entries %}
+          <li {% if craft.app.request.segments|first == entry.title|kebab %} class="nav-link--active" {% endif %}>
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+            {% ifchildren %}
+            <ul class="menu">
+              {% children %}
+            </ul>
+            {% endifchildren %}
+          </li>
+          {% endnav %}
       </ul>
     </div>
   </div>

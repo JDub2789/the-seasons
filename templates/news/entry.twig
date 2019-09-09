@@ -1,0 +1,9 @@
+{% extends '_layout' %}
+
+{% block main %}
+<h1>{{ entry.title }}</h1>
+{% for block in entry.contentBlocks.all() %}
+{% include 'blocks/_entry' %}
+{% endfor %}
+
+{% endblock %}

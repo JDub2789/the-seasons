@@ -1,10 +1,13 @@
 {
   "require": {
-    "craftcms/cms": "^3.0.0",
+    "craftcms/cms": "3.3.1.2",
     "craftcms/redactor": "2.3.3.2",
+    "dolphiq/redirect": "1.0.23",
     "marionnewlevant/element-link": "1.0.0",
+    "topshelfcraft/wordsmith": "3.0.4",
     "verbb/cp-nav": "2.0.9",
-    "verbb/super-table": "2.1.19",
+    "verbb/image-resizer": "2.0.4",
+    "verbb/super-table": "2.2.1",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {

@@ -5,12 +5,25 @@
 <div class="cell medium-9">
   <h2 class="text--black">{{ entry.title }}</h2>
   <p class="text--bold">{{ entry.eventDate|date('l, M j, Y') }}: {{ entry.eventDate|time('short') }}</p>
+  {% if entry.doorsOpenAt|length %}<p>{{ entry.doorsOpenAt }}</p>{% endif %}
   {% for block in entry.contentBlocks.all() %}
     {% include 'blocks/_entry' %}
   {% endfor %}
 </div>
 <div class="cell medium-3">
-{% include 'includes/_event-sidebar' %}
+  <h2 style="font-size:24px;" class="text--black">Related Events</h2>
+{% for event in craft.entries.section('events').orderBy('eventDate asc').all() if event.eventType == craft.app.request.segment(2)|camel and event.eventDate > date() %}
+
+  <div class="event-container">
+  <h4 class="text--primary">{{ event.title }}</h4>
+  <h5>{{ event.eventDate|date('M j, Y') }} - {{ event.eventDate|time('short') }}</h5>
+  <a class="button" href="{{ event.url() }}">More Info</a>
+  {% for block in event.contentBlocks.all() if block.type == 'buttons' %}
+    {% include 'blocks/_buttons' %}
+  {% endfor %}
+  </div>
+
+  {% endfor %}
 </div>
 </div>
 {% endblock %}

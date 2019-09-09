@@ -4,8 +4,7 @@
   {% for event in craft.entries.section('events').orderBy('eventDate asc').all() if event.eventDate > date() %}
   <div class="event-container">
   <h4 class="text--primary">{{ event.title }}</h4>
-  <h5>Event Date: {{ event.eventDate|date('M j, Y') }}</h5>
-  <h6>{{ event.eventDate|time('short') }}</h6>
+  <h5>{{ event.eventDate|date('M j, Y') }} - {{ event.eventDate|time('short') }}</h5>
   <a class="button" href="{{ event.url() }}">More Info</a>
   {% for block in event.contentBlocks.all() if block.type == 'buttons' %}
     {% include 'blocks/_buttons' %}

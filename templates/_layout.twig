@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ entry.title }}
+      - The Seasons Performance Hall</title>
+    <meta name="description" content="The Seasons Performance Hall in Yakima brings unique entertainment events in an intimate environment.">
+    <link rel="canonical" href="{{entry.url}}">
+    <style>
+      .no-js .top-bar {
+        display: none;
+      }
+
+      @media screen and(min-width: 40em) {
+        .no-js .top-bar {
+          display: block;
+        }
+
+        .no-js .title-bar {
+          display: none;
+        }
+      }
+    </style>
+    {# Google Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,800,900|Bigshot+One|Dancing+Script|Medula+One|Staatliches&display=swap" rel="stylesheet">
+
+    {% do view.registerCssFile (siteUrl ~ 'assets/css/app.css') %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141687511-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-141687511-1');
+    </script>
+
+
+  </head>
+  <body class="no-js">
+    {% include 'includes/navigation/_navigation' %}
+    {% if craft.app.request.segments|first == '' %}
+      {% include 'home/_slider' %}
+    {% endif %}
+    <main>
+      <div class="container"> {% block main %}{% endblock %}
+        </div>
+      </main>
+      {% include 'includes/footer/_footer' %}
+      {% do view.registerJsFile (siteUrl ~ 'assets/js/app.js') %}
+      {% do view.registerJsFile (siteUrl ~ 'assets/js/jquery.min.js') %}
+      {% do view.registerJsFile (siteUrl ~ 'assets/js/youtube-embed.js') %}
+      {% do view.registerJsFile (siteUrl ~ 'assets/js/slick.min.js') %}
+    </body>
+  </html>

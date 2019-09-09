@@ -16,4 +16,6 @@
       {% include 'blocks/_logos' with block %}
     {% case 'horizontalLine' %}
       <hr class="margin-top-30 margin-bottom-20">
+    {% case 'html' %}
+      {{ block.html|raw }}
   {% endswitch %}
